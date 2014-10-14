@@ -7,14 +7,14 @@ import time
 # conf
 config = ConfigParser.ConfigParser()
 config.read("/etc/mysql/debian.cnf")
-username = 'root'
-password = 'k260990'
+username = 'user'
+password = 'passwd'
 hostname = 'localhost'
 
 filestamp = time.strftime('%Y-%m-%d')
 
 # paths
-dr = "/media/komeks/kombackup/backup/sql/%s" % (filestamp)
+dr = "/home/backup/sql/%s" % (filestamp)
 if not os.path.exists(dr):
     os.makedirs(dr)
 # db list
@@ -25,5 +25,5 @@ for database in os.popen(database_list_command).readlines():
         continue
     if database == 'performance_schema':
         continue
-    filename = "/media/komeks/kombackup/backup/sql/%s/%s_%s.sql" % (filestamp, database, filestamp)
+    filename = "/home/backup/sql/%s/%s_%s.sql" % (filestamp, database, filestamp)
     os.popen("mysqldump -u %s -p%s -h %s -e --opt -c %s --skip-lock-tables | gzip -c > %s.gz" % (username, password, hostname, database, filename))

@@ -7,7 +7,7 @@ import time
 filestamp = time.strftime('%Y-%m-%d')
 
 # paths
-dr = "/media/komeks/kombackup/backup/www/%s" % (filestamp)
+dr = "/home/backup/www/%s" % (filestamp)
 if not os.path.exists(dr):
     os.makedirs(dr)
 

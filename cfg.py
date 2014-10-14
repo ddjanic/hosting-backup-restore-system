@@ -7,7 +7,7 @@ import gzip
 filestamp = time.strftime('%Y-%m-%d')
 
 # paths
-dr = "/media/komeks/kombackup/backup/cfg/%s" % (filestamp)
+dr = "/home/backup/cfg/%s" % (filestamp)
 if not os.path.exists(dr):
     os.makedirs(dr)
 
@@ -21,7 +21,7 @@ samba = "/etc/samba/smb.conf"
 # cfg list
 
 
-f_in = open(mysql, "rb")
+f_in = open(mysql, 'rb')
 f_out = gzip.open(dr+'/my.cnf.gz', 'wb')
 f_out.writelines(f_in)
 f_out.close()
