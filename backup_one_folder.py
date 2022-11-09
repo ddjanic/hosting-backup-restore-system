@@ -2,6 +2,7 @@
 
 import os
 import tarfile
+import lzma
 import time
 
 # timestamp year - month - day
@@ -14,10 +15,10 @@ if not os.path.exists(dr):
 # need to backup /mnt/share/OK folder for example every 5 day days via cron
 home = '/mnt/share/OK'
 
-targ_file = dr+".tar.gz"
+targ_file = dr+".txz"
 
 def make_tarfile(output_filename, source_dir):
-    with tarfile.open(output_filename, "w:gz") as tar:
+    with tarfile.open(output_filename, "w:xz") as tar:
         tar.add(source_dir, arcname=os.path.basename(source_dir))
 
 make_tarfile(targ_file, home)

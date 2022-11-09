@@ -1,4 +1,8 @@
 hosting-backup-restore-system
 =============================
 
-Backup/Restore system for hosting under *NIX coded on Python 2.6+
+*nix posix backup/restore system via python3:
+- www recursive all sites
+- bckp for one folder
+- mysql/mariadb bckp
+

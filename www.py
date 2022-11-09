@@ -2,6 +2,7 @@
 
 import os
 import tarfile
+import lzma
 import time
 
 filestamp = time.strftime('%Y-%m-%d')
@@ -18,6 +19,6 @@ home_dirs = [ name for name in os.listdir(home) if os.path.isdir(os.path.join(ho
 
 for directory in home_dirs:
     full_dir = os.path.join(home, directory)
-    tar = tarfile.open(os.path.join(backup_dir, directory+'.tar.gz'), 'w:gz')
+    tar = tarfile.open(os.path.join(backup_dir, directory+'.txz'), 'w:xz')
     tar.add(full_dir)
     tar.close()
